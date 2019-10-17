@@ -22,8 +22,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#include "core.h"
-#include "text_lib.h"
+#include "../core.h"
+#include "../libraries/text_lib.h"
 
 enum ErrorCode cmd_PRINT(struct Core *core)
 {

@@ -18,7 +18,7 @@
 //
 
 #include "startup_sequence.h"
-#include "core.h"
+#include "../core.h"
 #include <string.h>
 #include <stdint.h>
 

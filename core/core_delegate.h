@@ -20,8 +20,8 @@
 #ifndef core_delegate_h
 #define core_delegate_h
 
-#include "data_manager.h"
-#include "error.h"
+#include "datamanager/data_manager.h"
+#include "interpreter/error.h"
 
 struct Core;
 

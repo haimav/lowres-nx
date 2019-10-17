@@ -23,8 +23,8 @@
 #include <string.h>
 #include <math.h>
 #include <stdint.h>
-#include "core.h"
-#include "default_characters.h"
+#include "../core.h"
+#include "../libraries/default_characters.h"
 #include "cmd_audio.h"
 #include "cmd_control.h"
 #include "cmd_variables.h"

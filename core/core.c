@@ -21,8 +21,8 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include "string_utils.h"
-#include "startup_sequence.h"
+#include "interpreter/string_utils.h"
+#include "libraries/startup_sequence.h"
 
 const char CoreInputKeyReturn = '\n';
 const char CoreInputKeyBackspace = '\b';

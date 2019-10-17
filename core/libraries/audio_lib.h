@@ -22,7 +22,7 @@
 
 #include <stdio.h>
 #include <stdbool.h>
-#include "audio_chip.h"
+#include "../machine/audio_chip.h"
 
 #define NUM_SOUNDS 16
 #define NUM_PATTERNS 64

@@ -18,7 +18,7 @@
 //
 
 #include "audio_lib.h"
-#include "core.h"
+#include "../core.h"
 #include <math.h>
 
 #define SOUND_SIZE 8

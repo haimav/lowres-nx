@@ -18,7 +18,7 @@
 //
 
 #include "interpreter_utils.h"
-#include "core.h"
+#include "../core.h"
 
 enum ErrorCode itp_evaluateSimpleAttributes(struct Core *core, struct SimpleAttributes *attrs)
 {

@@ -18,7 +18,7 @@
 //
 
 #include "video_chip.h"
-#include "core.h"
+#include "../core.h"
 #include <string.h>
 
 #define OVERLAY_FLAG (1<<6)

@@ -18,7 +18,7 @@
 //
 
 #include "disk_drive.h"
-#include "core.h"
+#include "../core.h"
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>

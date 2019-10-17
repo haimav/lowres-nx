@@ -18,7 +18,7 @@
 //
 
 #include "cmd_audio.h"
-#include "core.h"
+#include "../core.h"
 #include "interpreter_utils.h"
 
 enum ErrorCode cmd_SOUND(struct Core *core)

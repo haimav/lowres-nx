@@ -18,11 +18,11 @@
 //
 
 #include "data_manager.h"
-#include "charsets.h"
+#include "../interpreter/charsets.h"
 #include <string.h>
 #include <stdlib.h>
 #include <assert.h>
-#include "string_utils.h"
+#include "../interpreter/string_utils.h"
 
 int data_calcOutputSize(struct DataManager *manager);
 

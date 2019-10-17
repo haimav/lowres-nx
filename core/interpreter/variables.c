@@ -18,7 +18,7 @@
 //
 
 #include "variables.h"
-#include "core.h"
+#include "../core.h"
 #include <stdlib.h>
 #include <string.h>
 

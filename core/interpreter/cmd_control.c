@@ -18,7 +18,7 @@
 //
 
 #include "cmd_control.h"
-#include "core.h"
+#include "../core.h"
 #include <assert.h>
 
 enum ErrorCode cmd_END(struct Core *core)

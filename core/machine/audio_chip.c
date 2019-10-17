@@ -18,7 +18,7 @@
 //
 
 #include "audio_chip.h"
-#include "core.h"
+#include "../core.h"
 #include <math.h>
 #include <string.h>
 

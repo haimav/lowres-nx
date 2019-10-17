@@ -18,7 +18,7 @@
 //
 
 #include "cmd_io.h"
-#include "core.h"
+#include "../core.h"
 #include <assert.h>
 
 enum ErrorCode cmd_KEYBOARD(struct Core *core)

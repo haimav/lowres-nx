@@ -21,7 +21,7 @@
 #include <assert.h>
 #include <string.h>
 #include <stdbool.h>
-#include "core.h"
+#include "../core.h"
 
 void machine_init(struct Core *core)
 {

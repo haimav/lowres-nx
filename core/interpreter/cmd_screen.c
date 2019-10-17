@@ -18,7 +18,7 @@
 //
 
 #include "cmd_screen.h"
-#include "core.h"
+#include "../core.h"
 #include <assert.h>
 #include <stdint.h>
 #include "interpreter_utils.h"

@@ -18,7 +18,7 @@
 //
 
 #include "cmd_strings.h"
-#include "core.h"
+#include "../core.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>

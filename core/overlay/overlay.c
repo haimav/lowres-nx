@@ -18,8 +18,8 @@
 //
 
 #include "overlay.h"
-#include "core.h"
-#include "io_chip.h"
+#include "../core.h"
+#include "../machine/io_chip.h"
 #include <math.h>
 
 void overlay_clear(struct Core *core);

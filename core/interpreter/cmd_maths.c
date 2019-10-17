@@ -19,7 +19,7 @@
 
 #define _USE_MATH_DEFINES
 #include "cmd_maths.h"
-#include "core.h"
+#include "../core.h"
 #include <math.h>
 #include <assert.h>
 #include <stdlib.h>

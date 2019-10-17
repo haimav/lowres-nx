@@ -18,7 +18,7 @@
 //
 
 #include "cmd_subs.h"
-#include "core.h"
+#include "../core.h"
 
 enum ErrorCode cmd_CALL(struct Core *core)
 {

@@ -18,7 +18,7 @@
 //
 
 #include "cmd_data.h"
-#include "core.h"
+#include "../core.h"
 
 enum ErrorCode cmd_DATA(struct Core *core)
 {

@@ -18,7 +18,7 @@
 //
 
 #include "cmd_variables.h"
-#include "core.h"
+#include "../core.h"
 
 enum ErrorCode cmd_LET(struct Core *core)
 {

@@ -18,11 +18,11 @@
 //
 
 #include "cmd_sprites.h"
-#include "core.h"
+#include "../core.h"
 #include "value.h"
 #include "cmd_text.h"
 #include "interpreter_utils.h"
-#include "sprites_lib.h"
+#include "../libraries/sprites_lib.h"
 #include <assert.h>
 
 enum ErrorCode cmd_SPRITE(struct Core *core)

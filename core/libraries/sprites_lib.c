@@ -18,7 +18,7 @@
 //
 
 #include "sprites_lib.h"
-#include "core.h"
+#include "../core.h"
 #include <stdint.h>
 
 bool sprlib_isSpriteOnScreen(struct Sprite *sprite)

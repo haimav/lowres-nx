@@ -18,7 +18,7 @@
 //
 
 #include "cmd_files.h"
-#include "core.h"
+#include "../core.h"
 #include <assert.h>
 #include <string.h>
 

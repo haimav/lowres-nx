@@ -22,9 +22,9 @@
 
 #include <stdio.h>
 #include <stdbool.h>
-#include "video_chip.h"
+#include "../machine/video_chip.h"
 #include "overlay_data.h"
-#include "text_lib.h"
+#include "../libraries/text_lib.h"
 
 struct Core;
 

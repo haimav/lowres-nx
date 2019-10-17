@@ -30,11 +30,11 @@
 #include "labels.h"
 #include "variables.h"
 #include "data.h"
-#include "text_lib.h"
-#include "sprites_lib.h"
-#include "audio_lib.h"
-#include "io_chip.h"
-#include "data_manager.h"
+#include "../libraries/text_lib.h"
+#include "../libraries/sprites_lib.h"
+#include "../libraries/audio_lib.h"
+#include "../machine/io_chip.h"
+#include "../datamanager/data_manager.h"
 
 #define BAS_TRUE -1.0f
 #define BAS_FALSE 0.0f
