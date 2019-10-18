@@ -20,6 +20,8 @@
 #ifndef interpreter_config_h
 #define interpreter_config_h
 
+#ifdef NX_REGULAR_MEMSIZE
+
 #define MAX_TOKENS 16384
 #define MAX_SYMBOLS 1024
 #define MAX_LABEL_STACK_ITEMS 128
@@ -30,6 +32,23 @@
 #define SYMBOL_NAME_SIZE 21
 #define MAX_ARRAY_DIMENSIONS 4
 #define MAX_ARRAY_SIZE 32768
+
+
+#else
+
+#define MAX_TOKENS 3096
+#define MAX_SYMBOLS 1024
+#define MAX_LABEL_STACK_ITEMS 128
+#define MAX_JUMP_LABEL_ITEMS 128
+#define MAX_SUB_ITEMS 128
+#define MAX_SIMPLE_VARIABLES 128
+#define MAX_ARRAY_VARIABLES 128
+#define SYMBOL_NAME_SIZE 21
+#define MAX_ARRAY_DIMENSIONS 4
+#define MAX_ARRAY_SIZE 10000
+
+#endif
+
 #define MAX_CYCLES_TOTAL_PER_FRAME 17556
 #define MAX_CYCLES_PER_VBL 1140
 #define MAX_CYCLES_PER_RASTER 51
