@@ -73,13 +73,22 @@ void itp_deinit(struct Core *core)
 
 struct CoreError itp_compileProgram(struct Core *core, const char *sourceCode)
 {
+  return  itp_compileProgramEx(core, sourceCode, 0);
+}
+
+struct CoreError itp_compileProgramEx(struct Core *core, char *sourceCode,
+                                    int inplaceSource)
+{
     struct Interpreter *interpreter = core->interpreter;
     
     itp_freeProgram(core);
     
     // Parse source code
-    
-    interpreter->sourceCode = uppercaseString(sourceCode);
+    if (inplaceSource) {
+      uppercaseStringInplace(sourceCode);
+      interpreter->sourceCode = sourceCode;
+    } else
+      interpreter->sourceCode = uppercaseString(sourceCode);
     if (!interpreter->sourceCode) return err_makeCoreError(ErrorOutOfMemory, -1);
     
     struct CoreError error = tok_tokenizeUppercaseProgram(&interpreter->tokenizer, interpreter->sourceCode);

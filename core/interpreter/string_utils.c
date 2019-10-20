@@ -44,6 +44,19 @@ const char *uppercaseString(const char *source)
     return buffer;
 }
 
+void uppercaseStringInplace(char *source)
+{
+  char *sourceChar = source;
+  char finalChar = 0;
+  while (*sourceChar)
+  {
+    finalChar = *sourceChar;
+    if (finalChar >= 'a' && finalChar <= 'z')
+      finalChar -= 32;
+    *sourceChar++ = finalChar;
+  }
+}
+
 const char *lineString(const char *source, int pos)
 {
     const char *start = &source[pos];

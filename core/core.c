@@ -87,10 +87,15 @@ void core_setDelegate(struct Core *core, struct CoreDelegate *delegate)
 
 struct CoreError core_compileProgram(struct Core *core, const char *sourceCode)
 {
+  core_compileProgramEx(core, sourceCode, 0);
+}
+struct CoreError core_compileProgramEx(struct Core *core, char *sourceCode,
+                                       int inplaceSource)
+{
     machine_reset(core);
     overlay_reset(core);
     disk_reset(core);
-    return itp_compileProgram(core, sourceCode);
+    return itp_compileProgramEx(core, sourceCode, inplaceSource);
 }
 
 void core_traceError(struct Core *core, struct CoreError error)

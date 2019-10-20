@@ -121,6 +121,8 @@ struct Interpreter {
 
 void itp_init(struct Core *core);
 void itp_deinit(struct Core *core);
+struct CoreError itp_compileProgramEx(struct Core *core, char *sourceCode,
+  int inplaceSource);
 struct CoreError itp_compileProgram(struct Core *core, const char *sourceCode);
 void itp_runProgram(struct Core *core);
 void itp_runInterrupt(struct Core *core, enum InterruptType type);
