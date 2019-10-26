@@ -8,7 +8,21 @@ struct MachineInternals;
 struct Interpreter;
 struct DiskDrive;
 struct Overlay;
-struct CoreDelegate;
+struct DataManager;
+
+enum KeyboardMode {
+    KeyboardModeOff,
+    KeyboardModeOn,
+    KeyboardModeOptional,
+    KeyboardModeForceSize = 0xFFFFFFFF
+};
+
+struct ControlsInfo {
+    enum KeyboardMode keyboardMode;
+    int numGamepadsEnabled;
+    bool isTouchEnabled;
+    bool isAudioEnabled;
+};
 
 enum ErrorCode {
     ErrorNone,
@@ -76,6 +90,34 @@ enum ErrorCode {
     ErrorCodeForceSize = 0xFFFFFFFF
 };
 
+
+struct CoreError {
+    ErrorCode code;
+    int sourcePosition;
+};
+
+struct CoreDelegate {
+    void *context;
+    
+    /** Called on error */
+    void (*interpreterDidFail)(void *context,  CoreError coreError);
+    
+    /** Returns true if the disk is ready, false if not. In case of not, core_diskLoaded must be called when ready. */
+    bool (*diskDriveWillAccess)(void *context,  DataManager *diskDataManager);
+    
+    /** Called when a disk data entry was saved */
+    void (*diskDriveDidSave)(void *context,  DataManager *diskDataManager);
+    
+    /** Called when keyboard or gamepad settings changed */
+    void (*controlsDidChange)(void *context,  ControlsInfo controlsInfo);
+    
+    /** Called when persistent RAM will be accessed the first time */
+    void (*persistentRamWillAccess)(void *context, uint8_t *destination, int size);
+    
+    /** Called when persistent RAM should be saved */
+    void (*persistentRamDidChange)(void *context, uint8_t *data, int size);
+};
+
 struct Core {
     Machine *machine;
     MachineInternals *machineInternals;
@@ -85,22 +127,46 @@ struct Core {
     CoreDelegate *delegate;
 };
 
-struct CoreError {
-    ErrorCode code;
-    int sourcePosition;
-};
-
 extern "C" {
   void core_init(Core *core);
   CoreError core_compileProgramEx(Core *core, const char *sourceCode, int inplaceSource);
   void core_willRunProgram(Core *core, long secondsSincePowerOn);
+
+  void interpreterDidFail(void *context,  CoreError coreError) {
+    Serial.println("interpreterDidFail");
+  }
+    
+  /** Returns true if the disk is ready, false if not. In case of not, core_diskLoaded must be called when ready. */
+  bool diskDriveWillAccess(void *context,  DataManager *diskDataManager) {
+    Serial.println("diskDriveWillAccess");
+  }
+    
+  /** Called when a disk data entry was saved */
+  void diskDriveDidSave(void *context,  DataManager *diskDataManager) {
+    Serial.println("diskDriveDidSave");
+  }
+    
+  /** Called when keyboard or gamepad settings changed */
+  void controlsDidChange(void *context,  ControlsInfo controlsInfo) {
+    Serial.println("controlsDidChange");
+  }
+    
+  /** Called when persistent RAM will be accessed the first time */
+  void persistentRamWillAccess(void *context, uint8_t *destination, int size) {
+    Serial.println("persistentRamWillAccess");
+  }
+    
+  /** Called when persistent RAM should be saved */
+  void persistentRamDidChange(void *context, uint8_t *data, int size) {
+    Serial.println("persistentRamDidChange");
+  }
 
   void cdbg_print(char *l) {
     Serial.print(l);
   }
 }
 
-struct Core core;
+Core core;
 
 void setup() {
   Serial.begin(115200);
@@ -136,6 +202,14 @@ void setup() {
   arcada.fillScreen(ARCADA_CYAN);
   arcada.infoBox("Compiling program...", 0); 
   core_init(&core);
+  core.delegate = (CoreDelegate *)calloc(1, sizeof(CoreDelegate));
+  core.delegate->interpreterDidFail = interpreterDidFail;
+  core.delegate->diskDriveWillAccess = diskDriveWillAccess;
+  core.delegate->diskDriveDidSave = diskDriveDidSave;
+  core.delegate->controlsDidChange = controlsDidChange;
+  core.delegate->persistentRamWillAccess = persistentRamWillAccess;
+  core.delegate->persistentRamDidChange = persistentRamDidChange;
+  
   CoreError err = core_compileProgramEx(&core, nxfile, 1);
   //Serial.printf("code is %d, at position %d\n", err.code, err.sourcePosition);
   if (err.code == ErrorNone)
