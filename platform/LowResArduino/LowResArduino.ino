@@ -73,6 +73,7 @@ enum ErrorCode {
     ErrorGamepadNotEnabled,
     ErrorTouchNotEnabled,
     ErrorInputChangeNotAllowed,
+    ErrorCodeForceSize = 0xFFFFFFFF
 };
 
 struct Core {
@@ -92,6 +93,11 @@ struct CoreError {
 extern "C" {
   void core_init(Core *core);
   CoreError core_compileProgramEx(Core *core, const char *sourceCode, int inplaceSource);
+  void core_willRunProgram(Core *core, long secondsSincePowerOn);
+
+  void cdbg_print(char *l) {
+    Serial.print(l);
+  }
 }
 
 struct Core core;
@@ -131,10 +137,13 @@ void setup() {
   arcada.infoBox("Compiling program...", 0); 
   core_init(&core);
   CoreError err = core_compileProgramEx(&core, nxfile, 1);
+  //Serial.printf("code is %d, at position %d\n", err.code, err.sourcePosition);
   if (err.code == ErrorNone)
     Serial.println("Compiliation successful!");
   else 
     Serial.printf("code is %d, at position %d\n", err.code, err.sourcePosition);
+  //core_willRunProgram(&core, 0);
+   
 }
 
 bool bl = false;

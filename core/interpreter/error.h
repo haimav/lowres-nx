@@ -85,6 +85,7 @@ enum ErrorCode {
     ErrorGamepadNotEnabled,
     ErrorTouchNotEnabled,
     ErrorInputChangeNotAllowed,
+    ErrorCodeForceSize = 0xFFFFFFFF
 };
 
 struct CoreError {
