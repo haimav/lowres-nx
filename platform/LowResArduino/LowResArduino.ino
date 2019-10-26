@@ -127,10 +127,31 @@ struct Core {
     CoreDelegate *delegate;
 };
 
+struct CoreInputGamepad {
+    bool up;
+    bool down;
+    bool left;
+    bool right;
+    bool buttonA;
+    bool buttonB;
+};
+
+struct CoreInput {
+    CoreInputGamepad gamepads[2];
+    bool pause;
+    int touchX;
+    int touchY;
+    bool touch;
+    char key;
+    bool out_hasUsedInput;
+};
+
+
 extern "C" {
   void core_init(Core *core);
   CoreError core_compileProgramEx(Core *core, const char *sourceCode, int inplaceSource);
   void core_willRunProgram(Core *core, long secondsSincePowerOn);
+  void core_update(Core *core, CoreInput *input);
 
   void interpreterDidFail(void *context,  CoreError coreError) {
     Serial.println("interpreterDidFail");
@@ -222,6 +243,10 @@ void setup() {
 
 bool bl = false;
 void loop() {
+  CoreInput input;
+  memset(&input, 0, sizeof(CoreInput));
+  core_update(&core, &input);
+  
   if (bl)
     arcada.fillScreen(ARCADA_BLUE);
   else 
