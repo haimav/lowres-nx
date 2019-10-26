@@ -28,7 +28,8 @@ enum ValueType {
     ValueTypeNull,
     ValueTypeError,
     ValueTypeFloat,
-    ValueTypeString
+    ValueTypeString,
+    ValueForceSize = 0xFFFFFFFF
 };
 
 union Value {

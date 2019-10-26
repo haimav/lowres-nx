@@ -43,7 +43,8 @@ struct Core;
 
 enum Pass {
     PassPrepare,
-    PassRun
+    PassRun,
+    PassForceSize = 0xFFFFFFFF
 };
 
 enum State {
@@ -52,18 +53,21 @@ enum State {
     StateInput,
     StatePaused,
     StateWaitForDisk,
-    StateEnd
+    StateEnd,
+    StateModeForceSize = 0xFFFFFFFF
 };
 
 enum Mode {
     ModeNone,
     ModeMain,
-    ModeInterrupt
+    ModeInterrupt,
+    ModeForceSize = 0xFFFFFFFF
 };
 
 enum InterruptType {
     InterruptTypeRaster,
-    InterruptTypeVBL
+    InterruptTypeVBL,
+    InterruptModeForceSize = 0xFFFFFFFF
 };
 
 struct Interpreter {

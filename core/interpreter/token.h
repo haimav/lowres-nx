@@ -229,7 +229,9 @@ enum TokenType {
     TokenVOICE,
     TokenWRITE,
     
-    Token_count
+    Token_count,
+
+    TokenForceSize = 0xFFFFFFFF
 };
 
 struct Token {

@@ -39,6 +39,7 @@ enum LabelType {
     LabelTypeSUB,
     LabelTypeCALL,
     LabelTypeONCALL,
+    LabelTypeForceSize = 0xFFFFFFFF
 };
 
 struct LabelStackItem {

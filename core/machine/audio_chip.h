@@ -37,13 +37,15 @@ enum WaveType {
     WaveTypeSawtooth,
     WaveTypeTriangle,
     WaveTypePulse,
-    WaveTypeNoise
+    WaveTypeNoise,
+    WaveTypeForceSize = 0xFFFFFFFF
 };
 
 enum EnvState {
     EnvStateAttack,
     EnvStateDecay,
-    EnvStateRelease
+    EnvStateRelease,
+    EnvStateForceSize = 0xFFFFFFFF
 };
 
 union VoiceStatus {
@@ -69,7 +71,8 @@ enum LFOWaveType {
     LFOWaveTypeTriangle,
     LFOWaveTypeSawtooth,
     LFOWaveTypeSquare,
-    LFOWaveTypeRandom
+    LFOWaveTypeRandom,
+    LFOWaveTypeForceSize = 0xFFFFFFFF
 };
 
 union LFOAttributes {

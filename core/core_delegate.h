@@ -28,7 +28,8 @@ struct Core;
 enum KeyboardMode {
     KeyboardModeOff,
     KeyboardModeOn,
-    KeyboardModeOptional
+    KeyboardModeOptional,
+    KeyboardModeForceSize = 0xFFFFFFFF
 };
 
 struct ControlsInfo {

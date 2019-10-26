@@ -142,7 +142,7 @@ void setup() {
     Serial.println("Compiliation successful!");
   else 
     Serial.printf("code is %d, at position %d\n", err.code, err.sourcePosition);
-  //core_willRunProgram(&core, 0);
+  core_willRunProgram(&core, 0);
    
 }
 

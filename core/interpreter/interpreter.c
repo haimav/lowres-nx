@@ -90,8 +90,11 @@ struct CoreError itp_compileProgramEx(struct Core *core, char *sourceCode,
     } else
       interpreter->sourceCode = uppercaseString(sourceCode);
     if (!interpreter->sourceCode) return err_makeCoreError(ErrorOutOfMemory, -1);
-    
+
     struct CoreError error = tok_tokenizeUppercaseProgram(&interpreter->tokenizer, interpreter->sourceCode);
+    char str[100];
+    sprintf(str, "error code: %d\n", error.code);
+    cdbg_print(str);
     if (error.code != ErrorNone)
     {
         return error;
@@ -193,6 +196,8 @@ struct CoreError itp_compileProgramEx(struct Core *core, char *sourceCode,
     interpreter->textLib.core = core;
     interpreter->spritesLib.core = core;
     interpreter->audioLib.core = core;
+
+    cdbg_print("here!\n");
 
     return err_noCoreError();
 }
